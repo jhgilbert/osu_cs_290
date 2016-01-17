@@ -1,1 +1,19 @@
-style.css
+/* table styles */
+
+table {
+	border-collapse: collapse;
+}
+
+table caption {
+	padding: 5px;
+	font-size: 1.3em;
+}
+
+tr > td:first-child {
+	font-style: italic;
+}
+
+td, th {
+	border: 1px solid black;
+	padding: 5px;
+}
