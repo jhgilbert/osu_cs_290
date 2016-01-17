@@ -9,7 +9,7 @@ table caption {
 	font-size: 1.3em;
 }
 
-tr > td:first-child {
+tbody tr > td:first-child {
 	font-style: italic;
 }
 
@@ -18,27 +18,62 @@ td, th {
 	padding: 5px;
 }
 
+tbody tr:nth-of-type(odd) {
+	background: beige;
+}
+
 /* typography */
 
 h1 {
-	border-top: 1px solid black;
 	padding-top: 10px;
+	font-family: "Helvetica", sans-serif;
+}
+
+section {
+	background-color: white;
+	margin: 20px auto;
+	padding: 0px 10px 10px 10px;
+	border-radius: 5px;
+}
+
+body {
+	background-color: gray;
 }
 
 /* some divs */
 
 .outer-content {
-	background-color: pink;
+	background-color: #ff3399;
 	width: 75%;
 	margin-top: 20px;
 	padding: 10px;
 }
 
 .inner-content {
-	background-color: blue;
-	color: white;
+	background-color: #ccffff;
 	width: 75%;
 	margin: 0px auto;
+	text-align: center;
 }
 
 /* form styles */
+fieldset {
+	margin: 10px auto;
+}
+
+fieldset legend {
+	font-weight: bold;
+	font-size: 1.2em;
+	letter-spacing: 1px;
+	font-family: "Helvetica", sans-serif;
+}
+
+input {
+	margin-top: 5px;
+}
+
+button {
+	padding: 10px;
+	font-size: 1em;
+	font-weight: bold;
+}

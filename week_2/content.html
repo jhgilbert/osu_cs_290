@@ -1,4 +1,6 @@
 <link rel="stylesheet" type="text/css" href="style.css">
+<section>
+<h1>Check out this table</h1>
 <table>
 	<caption>Some imaginary people and their traits</caption>
 	<thead>
@@ -58,20 +60,27 @@
 		</tr>
 	</tfoot>
 </table>
+</section>
+<section>
 <h1>Things that are cute</h1>
 <ul>
 	<li>Kittens</li>
 	<li>Bunnies</li>
 	<li>Hamsters</li>
 </ul>
+</section>
 
+<section>
 <h1>Here, enjoy some divs</h1>
 
 <div class="outer-content">
 	<div class="inner-content">
-		inner content div
+		This is an extremely important message.
 	</div>
 </div>
+</section>
+
+<section>
 <h1>GET form example</h1>
 <form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php">
 	<fieldset>
@@ -103,3 +112,37 @@
 	</fieldset>
 	<button type="submit">Submit</button>
 </form>
+</section>
+<section>
+<h1>POST form example</h1>
+<form action="http://classes.engr.oregonstate.edu/eecs/winter2015/cs290-400/tools/class-content/form_tests/check_request.php" method="post">
+	<fieldset>
+		<legend>Some fields</legend>
+		<label>Your favorite word:
+			<input type="text" name="text_input">
+		</label>
+		<br />
+		<label>Your favorite number:
+			<input type="number" name="numerical_input">
+		</label>
+		<br />
+		<label>Your password (we won't tell!):
+			<input type="password" name="password_input">
+		</label>
+		<br />
+	</fieldset>
+	<fieldset>
+		<legend>Some more fields</legend>
+		<label>Which candy do you like?
+					<br />
+		<input type="radio" name="candy" value="Snickers">Snickers
+		<br />
+		<input type="radio" name="candy" value="Skittles">Skittles
+				<br />
+		<input type="radio" name="candy" value="Mentos">Mentos
+				<br />
+		</label>		
+	</fieldset>
+	<button type="submit">Submit</button>
+</form>
+</section>
