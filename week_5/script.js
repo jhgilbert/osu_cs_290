@@ -5,9 +5,11 @@ function markSelectedNode() {
 
 // select a node
 function select(el) {
+	// remove outline from current selection
 	if (selectedNode) {
 		selectedNode.style.outline = "none";
 	}
+	// set new selection and outline it
 	selectedNode = el;
 	el.style.outline = "1px solid black";
 }
@@ -26,6 +28,7 @@ function getIndex(e) {
 function moveSelection(event) {
 	var direction = event.target.id;
 	switch(direction) {
+
 		case "up":
 		var aboveTr = selectedNode.parentNode.previousElementSibling;
 		if (aboveTr) {
@@ -33,6 +36,7 @@ function moveSelection(event) {
 			select(aboveTr.children[prevSelectedIdx]);
 		}
 		break;
+
 		case "down":
 		var belowTr = selectedNode.parentNode.nextElementSibling;
 		if (belowTr) {
@@ -40,12 +44,14 @@ function moveSelection(event) {
 			select(belowTr.children[prevSelectedIdx]);
 		}
 		break;
+
 		case "right":
-		var rightSibling = selectedNode.nextElementSibling
+		var rightSibling = selectedNode.nextElementSibling;
 		if (rightSibling) {
 			select(rightSibling);
 		}
 		break;
+
 		case "left":
 		var leftSibling = selectedNode.previousElementSibling;
 		if (leftSibling) {
@@ -55,8 +61,7 @@ function moveSelection(event) {
 	}
 }
 
-// build table - function is probably unnecessary,
-// but why clutter up a namespace
+// build table
 function buildTable() {
 	// create and add table
 	var table = document.createElement("table");
@@ -72,6 +77,7 @@ function buildTable() {
 	for (var i = 1; i < 5; i++) {
 		var td = document.createElement("td");
 		td.textContent = "Header " + i;
+		td.style.padding = "5px";
 		headTr.appendChild(td);
 	}
 
@@ -85,6 +91,7 @@ function buildTable() {
 		for (var n = 1; n < 5; n++) {
 			var td = document.createElement("td");
 			td.textContent = n + ', ' + i;
+			td.style.padding = "5px";
 			bodyTr.appendChild(td);
 		}
 	}
@@ -100,7 +107,8 @@ function buildDirectionButtons() {
 		var button = document.createElement("button");
 		button.setAttribute('id', labels[i]);
 		button.textContent = labels[i];
-		button.addEventListener("click", moveSelection)
+		button.style.margin = "5px";
+		button.addEventListener("click", moveSelection);
 		document.body.appendChild(button);
 	}
 }
@@ -110,6 +118,7 @@ function buildMarkButton() {
 	var markButton = document.createElement('button');
 	markButton.textContent = "Mark Cell";
 	markButton.setAttribute('id', 'cell-marker');
+	markButton.style.margin = "5px";
 	document.body.appendChild(markButton);
 	markButton.addEventListener('click', markSelectedNode);
 }
