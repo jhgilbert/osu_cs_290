@@ -14,16 +14,6 @@ function select(el) {
     el.style.border = "1px solid black";
 }
 
-// get node's index relative to siblings
-function getIndex(e) {
-    var parent = e.parentNode;
-    for (var i = 0; i < parent.children.length; i++) {
-        if (parent.children[i] === e) {
-            return i;
-        }
-    }
-}
-
 // move selection outline in one of four directions
 function moveSelection(event) {
     var direction = event.target.id;
@@ -32,16 +22,14 @@ function moveSelection(event) {
         case "up":
         var aboveTr = selectedNode.parentNode.previousElementSibling;
         if (aboveTr) {
-            prevSelectedIdx = getIndex(selectedNode);
-            select(aboveTr.children[prevSelectedIdx]);
+            select(aboveTr.children[selectedNode.cellIndex]);
         }
         break;
 
         case "down":
         var belowTr = selectedNode.parentNode.nextElementSibling;
         if (belowTr) {
-            prevSelectedIdx = getIndex(selectedNode);
-            select(belowTr.children[prevSelectedIdx]);
+            select(belowTr.children[selectedNode.cellIndex]);
         }
         break;
 
