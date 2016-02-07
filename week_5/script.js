@@ -7,11 +7,11 @@ function markSelectedNode() {
 function select(el) {
     // remove outline from current selection
     if (selectedNode) {
-        selectedNode.style.outline = "none";
+        selectedNode.style.border = "1px solid white"; 
     }
     // set new selection and outline it
     selectedNode = el;
-    el.style.outline = "1px solid black";
+    el.style.border = "1px solid black";
 }
 
 // get node's index relative to siblings
@@ -92,6 +92,7 @@ function buildTable() {
             var td = document.createElement("td");
             td.textContent = n + ', ' + i;
             td.style.padding = "5px";
+            td.style.border = "1px solid white";
             bodyTr.appendChild(td);
         }
     }
