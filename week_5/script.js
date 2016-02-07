@@ -24,7 +24,21 @@ for (var i = 1; i < 5; i++) {
 	for (var n = 1; n < 5; n++) {
 		var td = document.createElement("td");
 		td.textContent = n + ', ' + i;
-		tbody.appendChild(td);
+		bodyTr.appendChild(td);
 	}
 }
 
+function selectCell(x, y) {
+	// deselect old cell
+    var previouslySelectedCell = document.getElementsByClassName("selected")[0];
+    if (previouslySelectedCell) {
+    	previouslySelectedCell.classList.toggle("selected");
+    }
+    
+    // select new cell
+	var row = tbody.children[y - 1];
+	var cell = row.children[x - 1];
+	cell.classList.toggle("selected");
+}
+
+selectCell(1,1);
