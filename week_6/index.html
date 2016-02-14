@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>Fun with AJAX</title>
+	<script src="script.js"></script>
+</head>
+<body>
+	<h1>Open Weather Map</h1>
+	<form id="weather-request" action="javascript:">
+		<p>
+			<label>City:
+				<input id="weather-city" type="text" name="city">
+			</label>
+		</p>
+		<p> - or - </p>
+		<p>
+			<label>ZIP:
+				<input id="weather-zip" type="text" name="zip">
+			</label>
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+
+	<h1>HTTPbin Form</h1>
+	<form id="httpbin-form" action="javascript:">
+		<p>
+			<label>Your name:
+				<input id="postform-name" type="text" name="name">
+			</label>
+		</p>
+		<p>
+			<label>Your favorite color:
+				<input id="postform-color" type="text" name="favorite_color">
+			</label>
+		</p>
+		<button type="submit">Submit</button>
+	</form>
+	<p id="post-response-content"></p>
+</body>
+</html>
