@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', initPostFormListener);
 document.addEventListener('DOMContentLoaded', initWeatherFormListener);
 document.addEventListener('DOMContentLoaded', forceSingleWeatherFormInput);
 
+// Toggle the weather API url and data based on user interaction with form
 function forceSingleWeatherFormInput () {
 	document.getElementById('weather-city').oninput = function() {
 		document.getElementById('weather-zip').value = "";
@@ -16,11 +17,16 @@ function forceSingleWeatherFormInput () {
 	}
 }
 
+// send weather data request when user submits weather form
 function initWeatherFormListener() {
 	document.getElementById('weather-request').addEventListener('submit', function() {
 		event.preventDefault();
+
+		// prepare request
 		var req = new XMLHttpRequest();
 		req.open("GET", weatherApiUrl, true);
+
+		// display response on load
 		req.addEventListener('load', function() {
 			var response = JSON.parse(req.responseText);
 			if (response.cod == "200") {
@@ -31,6 +37,8 @@ function initWeatherFormListener() {
 				alert(response.message);
 			}
 		});
+
+		// send request
 		req.send(null);
 	})
 }
