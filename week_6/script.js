@@ -71,7 +71,8 @@ function initPostFormListener() {
 		req.addEventListener('load', function() {
 			if (req.status >= 200 && req.status < 400) {
 				var response = JSON.parse(req.responseText);
-				document.getElementById('post-response-content').textContent = JSON.stringify(response);
+				var submitted_data = JSON.parse(response.data);
+				document.getElementById('post-response-content').textContent = "Your name is " + submitted_data.name + " and your favorite color is " + submitted_data.favorite_color + ".";
 			} else {
 				console.log("Error in network request: " + request.statusText);
 			}
