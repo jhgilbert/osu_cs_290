@@ -9,11 +9,11 @@ document.addEventListener('DOMContentLoaded', forceSingleWeatherFormInput);
 function forceSingleWeatherFormInput () {
 	document.getElementById('weather-city').oninput = function() {
 		document.getElementById('weather-zip').value = "";
-		weatherApiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + this.value + ",us&appid=" + OPEN_WEATHER_MAP_KEY;
+		weatherApiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" + this.value + ",us&units=imperial&appid=" + OPEN_WEATHER_MAP_KEY;
 	}
 	document.getElementById('weather-zip').oninput = function() {
 		document.getElementById('weather-city').value = "";
-		weatherApiUrl = "http://api.openweathermap.org/data/2.5/weather?zip=" + this.value + ",us&appid=" + OPEN_WEATHER_MAP_KEY;
+		weatherApiUrl = "http://api.openweathermap.org/data/2.5/weather?zip=" + this.value + ",us&units=imperial&appid=" + OPEN_WEATHER_MAP_KEY;
 	}
 }
 
@@ -31,7 +31,17 @@ function initWeatherFormListener() {
 			var response = JSON.parse(req.responseText);
 			if (response.cod == "200") {
 				var response = JSON.parse(req.responseText);
-				document.getElementById('weather-response-content').textContent = JSON.stringify(response);
+
+				// update condition text
+				document.getElementById('condition').textContent = response.weather[0].main;
+				document.getElementById('temperature').textContent = response.main.temp + " degrees";
+				document.getElementById('humidity').textContent = response.main.humidity + " percent humidity";
+
+				// update weather icon
+				document.getElementById('icon').innerHTML = '';
+				var weatherIcon = document.createElement('img');
+				weatherIcon.setAttribute('src', 'http://openweathermap.org/img/w/' + response.weather[0].icon + '.png');
+				document.getElementById('icon').appendChild(weatherIcon);
 			} else {
 				document.getElementById('weather-response-content').textContent = '';
 				alert(response.message);
