@@ -21,11 +21,11 @@ app.use(bodyParser.json());
 
 // Routes
 
-app.get('/', function(req,res) {
+app.get('/*', function(req,res) {
   res.render('request-report', buildContext(req));
 });
 
-app.post('/', function(req,res) {
+app.post('/*', function(req,res) {
   res.render('request-report', buildContext(req));
 });
 
@@ -47,7 +47,10 @@ app.use(function(err, req, res, next){
 // Helpers
 
 function buildContext(req) {
-  context = {requestType: req.method};
+  context = {
+    requestType: req.method, 
+    path: req._parsedUrl.pathname
+  };
   if (Object.keys(req.query).length) {
     context.queryParams = req.query;
   }

@@ -1,5 +1,13 @@
 <h1>{{requestType}} request report</h1>
 
+<hr>
+
+<h2>Request URL</h2>
+
+<p><code>{{path}}</code></p>
+
+<hr>
+
 <h2>Query Parameters</h2>
 
 {{#unless queryParams}}
@@ -13,6 +21,8 @@
 </ul>
 
 {{#if bodyParams}}
+<hr>
+
 <h2>Body Parameters</h2>
 
 <ul>
