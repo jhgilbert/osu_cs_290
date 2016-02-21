@@ -1,0 +1,25 @@
+<h1>{{requestType}} request report</h1>
+
+<h2>Query Parameters</h2>
+
+{{#unless queryParams}}
+<p>This request did not have query parameters.</p>
+{{/unless}}
+
+<ul>
+  {{#each queryParams}}
+  <li>{{@key}}: {{this}}</li>
+  {{/each}}
+</ul>
+
+<h2>Body Parameters</h2>
+
+{{#unless bodyParams}}
+<p>This request did not have body parameters.</p>
+{{/unless}}
+
+<ul>
+  {{#each bodyParams}}
+  <li>{{@key}}: {{this}}</li>
+  {{/each}}
+</ul>
