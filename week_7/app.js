@@ -7,7 +7,11 @@ var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
+// Port and static handling
+
 app.set('port', 3000);
+var path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Add parsing for POST requests
 

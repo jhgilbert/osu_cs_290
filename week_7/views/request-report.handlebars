@@ -8,18 +8,16 @@
 
 <ul>
   {{#each queryParams}}
-  <li>{{@key}}: {{this}}</li>
+  <li><code>{{@key}}</code> had a value of <code>{{this}}</code>.</li>
   {{/each}}
 </ul>
 
+{{#if bodyParams}}
 <h2>Body Parameters</h2>
-
-{{#unless bodyParams}}
-<p>This request did not have body parameters.</p>
-{{/unless}}
 
 <ul>
   {{#each bodyParams}}
-  <li>{{@key}}: {{this}}</li>
+  <li><code>{{@key}}</code> had a value of <code>{{this}}</code>.</li>
   {{/each}}
 </ul>
+{{/if}}
