@@ -1,0 +1,17 @@
+{
+  "name": "week_7",
+  "version": "1.0.0",
+  "description": "Homework assignment for web dev class",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "express-handlebars": "^3.0.0",
+    "forever": "^0.15.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jennifer Gilbert",
+  "license": "ISC"
+}
