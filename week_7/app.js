@@ -1,39 +1,31 @@
 var express = require('express');
-
 var app = express();
-var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 
+// Handlebars templating
+
+var handlebars = require('express-handlebars').create({defaultLayout: 'main'});
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.set('port', 3000);
 
-var bodyParser = require('body-parser');
+// Add parsing for POST requests
 
+var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+// Routes
+
 app.get('/', function(req,res) {
-  context = {requestType: 'GET'};
-  if (Object.keys(req.query).length) {
-    context.queryParams = req.query;
-  }
-  if (Object.keys(req.body).length) {
-    context.bodyParams = req.body;
-  }
-  res.render('request-report', context);
+  res.render('request-report', buildContext(req));
 });
 
 app.post('/', function(req,res) {
-  context = {requestType: 'POST'};
-  if (Object.keys(req.query).length) {
-    context.queryParams = req.query;
-  }
-  if (Object.keys(req.body).length) {
-    context.bodyParams = req.body;
-  }
-  res.render('request-report', context);
+  res.render('request-report', buildContext(req));
 });
+
+// Error Handling
 
 app.use(function(req,res) {
   res.type('text/plain');
@@ -47,6 +39,22 @@ app.use(function(err, req, res, next){
   res.status(500);
   res.send('500 - Server Error');
 });
+
+// Helpers
+
+function buildContext(req) {
+  context = {requestType: req.method};
+  if (Object.keys(req.query).length) {
+    context.queryParams = req.query;
+  }
+  if (Object.keys(req.body).length) {
+    context.bodyParams = req.body;
+  }
+  return context;
+}
+
+
+// Listen on designated port
 
 app.listen(app.get('port'), function() {
   console.log('Express started on http://localhost:' + app.get('port') + '; press Ctrl+C to terminate.');
